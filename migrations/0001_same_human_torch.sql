@@ -1,0 +1,1 @@
+ALTER TABLE "event_images" ALTER COLUMN "event_id" SET DATA TYPE text;
