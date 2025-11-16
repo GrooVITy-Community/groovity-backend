@@ -5,13 +5,13 @@
 **Frontend**: React + Vite + TypeScript  
 **Backend**: Express + TypeScript  
 **ORM**: Drizzle  
-**Database**: Dual-database support (PostgreSQL for production, SQLite for local development)  
+**Database**: PostgreSQL for production
 **Storage**: AWS S3 + CloudFront CDN  
 **Deployment**: AWS EC2 (Ubuntu) using PM2
 
-## Dual-Database Architecture
+## Database Architecture
 
-The backend supports both PostgreSQL and SQLite through a runtime database abstraction layer:
+The backend supports both PostgreSQL through a runtime database abstraction layer:
 
 ### Database Selection
 - **PostgreSQL Mode**: When `DATABASE_URL` environment variable is set
@@ -19,10 +19,6 @@ The backend supports both PostgreSQL and SQLite through a runtime database abstr
   - Schema defined in `shared/schema.ts` with `pgTable`
   - Ideal for production deployment
   
-- **SQLite Mode**: When `DATABASE_URL` is not set
-  - Uses `drizzle-orm/better-sqlite3` driver
-  - Schema defined in `shared/schema.sqlite.ts` with `sqliteTable`
-  - Ideal for local development without PostgreSQL setup
 
 ### Implementation Details
 - **Abstraction Layer**: `server/db/index.ts` conditionally imports the correct schema and driver
